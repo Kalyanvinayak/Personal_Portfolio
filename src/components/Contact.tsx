@@ -29,21 +29,21 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
+      label: 'Name',
+      value: 'kalyan vinayak',
+      href: '#'
+    },
+    {
+      icon: Mail,
       label: 'Email',
-      value: 'kalyan.vinayak@example.com',
-      href: 'mailto:kalyan.vinayak@example.com'
+      value: 'kalyanvinayak1@gmail.com',
+      href: 'mailto:kalyanvinayak1@gmail.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 98765 43210',
-      href: 'tel:+919876543210'
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: 'IIIT Manipur, India',
-      href: '#'
+      value: '9693145362',
+      href: 'tel:9693145362'
     }
   ];
 
@@ -128,88 +128,10 @@ const Contact = () => {
               </div>
             </motion.div>
             
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-violet-500 transition-colors text-white"
-                    placeholder="Your Name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-violet-500 transition-colors text-white"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:outline-none focus:border-violet-500 transition-colors text-white resize-none"
-                    placeholder="Your message..."
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-violet-600 to-emerald-600 px-8 py-4 rounded-lg text-white font-semibold flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300 cursor-hover"
-                  whileHover={{ scale: 1.02, y: -2, boxShadow: "0 20px 25px -5px rgba(139, 92, 246, 0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
-                </motion.button>
-              </form>
-            </motion.div>
           </div>
         </motion.div>
       </div>
       
-      {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="mt-20 pt-8 border-t border-gray-700/50 text-center"
-      >
-        <p className="text-gray-400">
-          © 2024 Kalyan Vinayak. Built with React, TypeScript, and Framer Motion.
-        </p>
-      </motion.div>
     </section>
   );
 };
