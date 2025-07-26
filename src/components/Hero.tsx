@@ -46,26 +46,26 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
       {/* Animated background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 to-emerald-900/20" />
-        {[...Array(50)].map((_, i) => (
+        <div className="absolute inset-0 bg-secondary/20" />
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-violet-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-accent/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              opacity: [0.3, 1, 0.3],
-              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.5, 0.1],
+              scale: [1, 1.5, 1],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: Math.random() * 5 + 5,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: Math.random() * 3,
             }}
           />
         ))}
@@ -78,13 +78,13 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-light">
               Kalyan Vinayak
             </span>
           </h1>
           
           <div className="text-2xl md:text-3xl text-gray-300 mb-8 h-16">
-            <span className="text-violet-300">{typedText}</span>
+            <span className="text-accent">{typedText}</span>
           </div>
           
           <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ const Hero = () => {
           </p>
           
           <motion.button
-            className="bg-gradient-to-r from-violet-600 to-emerald-600 px-8 py-4 rounded-full text-white font-semibold text-lg hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300 cursor-hover"
+            className="bg-accent px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-accent/80 transition-all duration-300 cursor-hover"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToAbout}
@@ -109,7 +109,7 @@ const Hero = () => {
         transition={{ duration: 2, repeat: Infinity }}
         onClick={scrollToAbout}
       >
-        <ChevronDown className="w-8 h-8 text-violet-400" />
+        <ChevronDown className="w-8 h-8 text-accent" />
       </motion.div>
     </section>
   );

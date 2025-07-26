@@ -14,7 +14,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-20 bg-secondary">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -24,7 +24,7 @@ const About = () => {
           className="max-w-4xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-light">
               About Me
             </span>
           </h2>
@@ -36,9 +36,9 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="relative">
-                <div className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-violet-600/20 to-emerald-600/20 backdrop-blur-sm border border-violet-500/30 flex items-center justify-center">
-                  <div className="w-72 h-72 rounded-full bg-gradient-to-br from-violet-500/10 to-emerald-500/10 flex items-center justify-center">
-                    <span className="text-6xl font-bold bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
+                <div className="w-80 h-80 mx-auto rounded-full bg-primary/50 backdrop-blur-sm border border-accent/30 flex items-center justify-center">
+                  <div className="w-72 h-72 rounded-full bg-primary/20 flex items-center justify-center">
+                    <span className="text-6xl font-bold text-accent">
                       KV
                     </span>
                   </div>
@@ -74,13 +74,13 @@ const About = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-800/50 backdrop-blur-sm border border-violet-500/30 rounded-lg hover:border-violet-400/50 transition-all duration-300 cursor-hover"
+                    className="p-3 bg-primary/50 backdrop-blur-sm border border-accent/30 rounded-lg hover:border-accent/50 transition-all duration-300 cursor-hover"
                     whileHover={{ scale: 1.1, y: -2 }}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   >
-                    <social.icon className="w-6 h-6 text-violet-400" />
+                    <social.icon className="w-6 h-6 text-accent" />
                   </motion.a>
                 ))}
               </div>

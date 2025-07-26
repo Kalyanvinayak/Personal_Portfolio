@@ -11,7 +11,7 @@ import CustomCursor from './components/CustomCursor';
 
 function App() {
   return (
-    <div className="bg-gray-900 text-white overflow-x-hidden">
+    <div className="bg-primary text-light overflow-x-hidden">
       <CustomCursor />
       <Navbar />
       <Hero />
