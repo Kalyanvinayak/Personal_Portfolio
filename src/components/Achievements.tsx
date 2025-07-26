@@ -11,15 +11,22 @@ const AchievementCard = ({ achievement, index }: { achievement: any, index: numb
 
   return (
     <motion.div
-      ref={ref}
-      key={achievement.title}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="relative group cursor-hover"
-      whileHover={{ scale: 1.05, y: -10 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-    >
+  ref={ref}
+  key={achievement.title}
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={inView ? { opacity: 1, scale: 1 } : {}}
+  whileHover={{ scale: 1.05, y: -10 }}
+  transition={{
+    type: "spring",
+    stiffness: 400,
+    damping: 17,
+    duration: 0.6,
+    delay: index * 0.2,
+  }}
+  className="relative group cursor-hover"
+>
+
+
       <div ref={parallaxRef}>
         <div className={`absolute inset-0 bg-accent rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
 
@@ -98,5 +105,5 @@ const Achievements = () => {
     </section>
   );
 };
-
+}
 export default Achievements;

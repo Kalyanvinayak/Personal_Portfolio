@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useParallax } from 'react-scroll-parallax';
 
-const Skills = () => {
 const SkillCard = ({ category, categoryIndex }: { category: any, categoryIndex: number }) => {
   const { ref: parallaxRef } = useParallax<HTMLDivElement>({ speed: 5 + categoryIndex * 5 });
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -18,7 +17,7 @@ const SkillCard = ({ category, categoryIndex }: { category: any, categoryIndex: 
       whileHover={{ scale: 1.02, y: -5 }}
     >
       <div ref={parallaxRef}>
-        <h3 className={`text-xl font-semibold mb-4 text-accent`}>
+        <h3 className="text-xl font-semibold mb-4 text-accent">
           {category.title}
         </h3>
 
@@ -31,15 +30,15 @@ const SkillCard = ({ category, categoryIndex }: { category: any, categoryIndex: 
               transition={{ duration: 0.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
               className="flex items-center space-x-2"
             >
-              <div className={`w-2 h-2 rounded-full bg-accent`} />
+              <div className="w-2 h-2 rounded-full bg-accent" />
               <span className="text-gray-300">{skill}</span>
             </motion.div>
           ))}
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -77,11 +76,9 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="text-light">
-              Technical Skills
-            </span>
+            <span className="text-light">Technical Skills</span>
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <SkillCard key={category.title} category={category} categoryIndex={categoryIndex} />
