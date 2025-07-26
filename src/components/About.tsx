@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, Linkedin, Code2, Trophy } from 'lucide-react';
+import { useParallax } from 'react-scroll-parallax';
 
 const About = () => {
+  const { ref: parallaxRef } = useParallax<HTMLDivElement>({ speed: 10 });
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const socialLinks = [
@@ -35,7 +37,7 @@ const About = () => {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative">
+              <div className="relative" ref={parallaxRef}>
                 <div className="w-80 h-80 mx-auto rounded-full bg-primary/50 backdrop-blur-sm border border-accent/30 flex items-center justify-center">
                   <div className="w-72 h-72 rounded-full bg-primary/20 flex items-center justify-center">
                     <span className="text-6xl font-bold text-accent">

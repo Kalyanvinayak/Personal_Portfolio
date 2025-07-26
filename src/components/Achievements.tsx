@@ -2,6 +2,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Trophy, Star, Award, Target } from 'lucide-react';
+import { useParallax } from 'react-scroll-parallax';
+
+const Achievements = () => {
+const AchievementCard = ({ achievement, index }: { achievement: any, index: number }) => {
+  const { ref: parallaxRef } = useParallax<HTMLDivElement>({ speed: 10 + index * 5 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  return (
+    <motion.div
+      ref={ref}
+      key={achievement.title}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+      className="relative group cursor-hover"
+      whileHover={{ scale: 1.05, y: -10 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+    >
+      <div ref={parallaxRef}>
+        <div className={`absolute inset-0 bg-accent rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+
+        <div className="relative bg-primary/80 backdrop-blur-sm border border-primary/50 rounded-2xl p-6 h-full flex flex-col items-center text-center group-hover:border-accent/30 transition-all duration-300">
+          <div className={`p-4 rounded-full bg-accent mb-4`}>
+            <achievement.icon className="w-8 h-8 text-white" />
+          </div>
+
+          <h3 className="text-lg font-bold text-white mb-2">{achievement.title}</h3>
+          <p className="text-gray-300 mb-4 flex-grow">{achievement.description}</p>
+          <span className={`text-sm font-semibold text-accent`}>
+            {achievement.year}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 const Achievements = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -54,29 +90,7 @@ const Achievements = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => (
-              <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative group cursor-hover"
-                whileHover={{ scale: 1.05, y: -10 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <div className={`absolute inset-0 bg-accent rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
-                
-                <div className="relative bg-primary/80 backdrop-blur-sm border border-primary/50 rounded-2xl p-6 h-full flex flex-col items-center text-center group-hover:border-accent/30 transition-all duration-300">
-                  <div className={`p-4 rounded-full bg-accent mb-4`}>
-                    <achievement.icon className="w-8 h-8 text-white" />
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-white mb-2">{achievement.title}</h3>
-                  <p className="text-gray-300 mb-4 flex-grow">{achievement.description}</p>
-                  <span className={`text-sm font-semibold text-accent`}>
-                    {achievement.year}
-                  </span>
-                </div>
-              </motion.div>
+              <AchievementCard key={achievement.title} achievement={achievement} index={index} />
             ))}
           </div>
         </motion.div>

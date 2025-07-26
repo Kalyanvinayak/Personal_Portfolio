@@ -1,6 +1,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useParallax } from 'react-scroll-parallax';
+
+const Skills = () => {
+const SkillCard = ({ category, categoryIndex }: { category: any, categoryIndex: number }) => {
+  const { ref: parallaxRef } = useParallax<HTMLDivElement>({ speed: 5 + categoryIndex * 5 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
+      className="bg-secondary backdrop-blur-sm border border-secondary/50 rounded-xl p-6 hover:border-accent/30 transition-all duration-300 cursor-hover"
+      whileHover={{ scale: 1.02, y: -5 }}
+    >
+      <div ref={parallaxRef}>
+        <h3 className={`text-xl font-semibold mb-4 text-accent`}>
+          {category.title}
+        </h3>
+
+        <div className="space-y-3">
+          {category.skills.map((skill: any, skillIndex: number) => (
+            <motion.div
+              key={skill}
+              initial={{ opacity: 0, x: -20 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
+              className="flex items-center space-x-2"
+            >
+              <div className={`w-2 h-2 rounded-full bg-accent`} />
+              <span className="text-gray-300">{skill}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -45,33 +84,7 @@ const Skills = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-                className="bg-secondary backdrop-blur-sm border border-secondary/50 rounded-xl p-6 hover:border-accent/30 transition-all duration-300 cursor-hover"
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <h3 className={`text-xl font-semibold mb-4 text-accent`}>
-                  {category.title}
-                </h3>
-                
-                <div className="space-y-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
-                      className="flex items-center space-x-2"
-                    >
-                      <div className={`w-2 h-2 rounded-full bg-accent`} />
-                      <span className="text-gray-300">{skill}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+              <SkillCard key={category.title} category={category} categoryIndex={categoryIndex} />
             ))}
           </div>
         </motion.div>
