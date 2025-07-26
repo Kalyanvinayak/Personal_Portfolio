@@ -38,7 +38,7 @@ const Achievements = () => {
   ];
 
   return (
-    <section id="achievements" className="py-20">
+    <section id="achievements" className="py-20 bg-secondary">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -47,7 +47,7 @@ const Achievements = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-light">
               Achievements
             </span>
           </h2>
@@ -63,16 +63,16 @@ const Achievements = () => {
                 whileHover={{ scale: 1.05, y: -10 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${achievement.color} rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+                <div className={`absolute inset-0 bg-accent rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
                 
-                <div className="relative bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 h-full flex flex-col items-center text-center group-hover:border-violet-500/30 transition-all duration-300">
-                  <div className={`p-4 rounded-full bg-gradient-to-r ${achievement.color} mb-4`}>
+                <div className="relative bg-primary/80 backdrop-blur-sm border border-primary/50 rounded-2xl p-6 h-full flex flex-col items-center text-center group-hover:border-accent/30 transition-all duration-300">
+                  <div className={`p-4 rounded-full bg-accent mb-4`}>
                     <achievement.icon className="w-8 h-8 text-white" />
                   </div>
                   
                   <h3 className="text-lg font-bold text-white mb-2">{achievement.title}</h3>
                   <p className="text-gray-300 mb-4 flex-grow">{achievement.description}</p>
-                  <span className={`text-sm font-semibold bg-gradient-to-r ${achievement.color} bg-clip-text text-transparent`}>
+                  <span className={`text-sm font-semibold text-accent`}>
                     {achievement.year}
                   </span>
                 </div>

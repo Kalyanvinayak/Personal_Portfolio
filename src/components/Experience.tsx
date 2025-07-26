@@ -23,7 +23,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-800/30">
+    <section id="experience" className="py-20 bg-primary">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -32,7 +32,7 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-violet-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-light">
               Experience
             </span>
           </h2>
@@ -47,16 +47,16 @@ const Experience = () => {
                 className="relative pl-8 pb-12"
               >
                 {/* Timeline line */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-500 to-emerald-500" />
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-accent" />
                 
                 {/* Timeline dot */}
-                <div className="absolute -left-2 top-0 w-4 h-4 bg-violet-500 rounded-full border-4 border-gray-900" />
+                <div className="absolute -left-2 top-0 w-4 h-4 bg-accent rounded-full border-4 border-primary" />
                 
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 hover:border-violet-500/30 transition-all duration-300">
+                <div className="bg-secondary backdrop-blur-sm border border-secondary/50 rounded-xl p-6 hover:border-accent/30 transition-all duration-300">
                   <div className="flex flex-wrap items-start justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
-                      <p className="text-xl text-violet-400 mb-2">{exp.company}</p>
+                      <p className="text-xl text-accent mb-2">{exp.company}</p>
                     </div>
                     
                     <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-400">
@@ -82,7 +82,7 @@ const Experience = () => {
                         transition={{ duration: 0.5, delay: (index * 0.2) + (achIndex * 0.1) }}
                         className="flex items-start space-x-3"
                       >
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
+                        <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                         <span className="text-gray-300">{achievement}</span>
                       </motion.li>
                     ))}
