@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { useParallax } from 'react-scroll-parallax';
 
 const useTypingEffect = (strings: string[], typeSpeed = 80, backSpeed = 50) => {
   const [displayText, setDisplayText] = React.useState('');
@@ -41,6 +42,7 @@ const Hero = () => {
     'IoT Innovator'
   ]);
 
+  const { ref } = useParallax<HTMLDivElement>({ speed: -20 });
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -48,7 +50,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-primary">
       {/* Animated background */}
-      <div className="absolute inset-0">
+      <div ref={ref} className="absolute inset-0">
         <div className="absolute inset-0 bg-secondary/20" />
         {[...Array(20)].map((_, i) => (
           <motion.div

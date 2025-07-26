@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import { useParallax } from 'react-scroll-parallax';
 
 const Contact = () => {
+  const { ref: parallaxRef } = useParallax<HTMLDivElement>({ speed: 10 });
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [formData, setFormData] = useState({
     name: '',
@@ -70,6 +72,7 @@ const Contact = () => {
           <div className="max-w-4xl mx-auto">
             {/* Contact Info */}
             <motion.div
+              ref={parallaxRef}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
